@@ -1,0 +1,142 @@
+:root {
+    --btn-color: rgb(74, 182, 74);
+    --btn-hover-color: rgb(17, 117, 17);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Hind Siliguri", sans-serif;
+}
+
+body {
+    background-color: rgb(234, 234, 234);
+    min-height: 100vh;
+}
+
+a,
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1);
+    border-radius: 8px;
+    padding: 30px 20px;
+}
+
+.form-container .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+}
+
+.form-container .form .form-title {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.form-container .form input[type="text"],
+.form-container .form input[type="email"],
+.form-container .form .password-field {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 17px;
+    caret-color: var(--btn-color);
+    outline: 0;
+}
+
+.form-container .form input[type="text"]:focus,
+.form-container .form input[type="email"]:focus,
+.form-container .form .password-field:focus-within {
+    box-shadow: 0px 0px 3px 3px var(--btn-color);
+}
+
+.form-container .form .password-field {
+    display: flex;
+    align-items: center;
+}
+
+.form-container .form .password-field input {
+    flex: 1;
+    border: 0;
+    font-size: 17px;
+    caret-color: var(--btn-color);
+    outline: 0;
+}
+.form-container .form .password-field button {
+    background: transparent;
+    border: 0;
+    color: var(--btn-color);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+    background-color: var(--btn-color) !important;
+    fill: white !important;
+    border-radius: 4px;
+}
+
+.flatpickr-day.selected {
+    background-color: var(--btn-color) !important;
+    color: white !important;
+    border-color: var(--btn-color) !important;
+}
+
+.flatpickr-day.today {
+    border-color: var(--btn-color) !important;
+}
+
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+    background: var(--btn-color) !important;
+    color: #fff;
+}
+
+.form-container .form .submit-btn {
+    background-color: var(--btn-color);
+    color: white;
+    cursor: pointer;
+    border: 0;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 48px;
+    padding: 0 16px;
+}
+
+.form-container .form .submit-btn:hover {
+    background-color: var(--btn-hover-color);
+}
+
+.form-container .form .form-footer {
+    text-align: center;
+}
+
+.form-container .form .form-footer a {
+    color: var(--btn-color);
+
+}
+
+.form-container .form .form-footer a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+    .form-container {
+        width: 432px;
+    }
+}

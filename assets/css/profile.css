@@ -1,0 +1,205 @@
+:root {
+    --primary-background: #1c1c1d;
+    --secondary-background: #252728;
+    --border-color: #3a3c3d;
+    --primary-color: #e2e5e9;
+    --icon-color: #b0b3b8;
+    --btn-color: #3b3d3e;
+    --btn-hover-color: #4f4f50;
+    --blue-color: #0866ff;
+}
+
+body {
+    height: 100%;
+    background: var(--secondary-background);
+    color: var(--primary-color);
+}
+
+.profile-details .cover-photo {
+    width: 100%;
+    height: 320px;
+    background: var(--primary-background);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    position: relative;
+}
+
+.profile-details .cover-photo .previewImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.profile-details .cover-photo .dropdown {
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
+}
+
+.profile-details .cover-photo .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--secondary-background);
+    background: var(--primary-color);
+    transition: all 0.1s ease;
+    font-weight: 600;
+}
+
+.profile-details .cover-photo .dropdown-toggle i {
+    color: var(--secondary-background);
+}
+
+.profile-details .cover-photo .dropdown-toggle:active {
+    transform: scale(0.9);
+}
+
+.profile-details .cover-photo .dropdown-toggle::after {
+    display: none;
+}
+
+.profile-details .cover-photo .dropdown-menu {
+    background: var(--secondary-background);
+    width: 350px;
+    border-radius: 10px;
+    padding: 3px 8px;
+    overflow: hidden;
+}
+
+.profile-details .cover-photo .dropdown-item {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    border-radius: 4px;
+    padding: 8px 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    /* gap: 10px; */
+}
+
+.profile-details .cover-photo .dropdown-item:hover {
+    background: var(--btn-hover-color);
+}
+
+.profile-details .cover-photo .dropdown-item i {
+    width: 30px;
+    color: var(--primary-color);
+}
+
+.profile-details .cover-photo .cover-btns {
+    position: absolute;
+    top: 0;
+    /* right: 0; */
+    padding: 10px 25px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.503);
+    visibility: hidden;
+}
+
+.profile-details .cover-photo .cover-btns button {
+    padding: 5px 35px;
+}
+
+.profile-details .profile-photo {
+    width: 168px;
+    height: 168px;
+    /* overflow: hidden; */
+    border-radius: 50%;
+    border: 5px solid #252728;
+    position: absolute;
+    left: 50px;
+    bottom: -80px;
+
+}
+
+.profile-details .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-details .profile-photo .edit-photo-btn {
+    position: absolute;
+    right: -5px;
+    bottom: 10px;
+    font-size: 20px;
+}
+
+.profile-details .profile-photo .edit-photo-btn i {
+    color: var(--primary-color);
+    background-color: var(--btn-color);
+    border-radius: 50%;
+    padding: 10px 8px;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+}
+
+.upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #243a52;
+    color: #6fadf4;
+    font-weight: 600;
+    padding: 5px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.upload-btn i {
+    color: #6fadf4;
+}
+
+.upload-btn:hover {
+    filter: brightness(1.2);
+}
+
+.preview-container {
+    width: 268px;
+    height: 268px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.preview-container .previewImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width:768px) {
+    .profile-details .cover-photo {
+        height: 150px;
+    }
+
+    .profile-details .cover-photo .dropdown {
+        right: 20px;
+    }
+
+    .profile-details .cover-photo .dropdown-toggle .content {
+        display: none;
+    }
+
+    .profile-details .cover-photo .dropdown-menu {
+        width: fit-content;
+    }
+
+    .profile-details .profile-photo {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+}
