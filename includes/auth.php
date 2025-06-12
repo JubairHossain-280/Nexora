@@ -17,11 +17,23 @@ if (isset($_POST['signupBtn'])) {
     $exeCheckAccount = mysqli_query($conn, $checkAccount);
     $countCheckAccount = mysqli_num_rows($exeCheckAccount);
     if ($countCheckAccount > 0) {
-        echo "<script>alert('এই ইমেইল দিয়ে অ্যাকাউন্ট আছে!')</script>";
+        ?>
+
+        <script>
+            alert('Already, an account exists with the same email ! \nPlease try with another one.')
+        </script>
+
+        <?php
     } else {
         // CHECK PASSWORD MATCH
         if ($password != $confirmPassword) {
-            echo "<script>alert('পাসওয়ার্ড মেলেনি!')</script>";
+            ?>
+
+            <script>
+                alert('Password does not match !')
+            </script>
+
+            <?php
         } else {
             // HASH PASSWORD
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -31,10 +43,10 @@ if (isset($_POST['signupBtn'])) {
             $exeInsertUserData = mysqli_query($conn, $insertUserData);
             if ($exeInsertUserData) {
                 $newUserId = mysqli_insert_id($conn);
-                
+
                 // GET THE NEW USER INFO
                 $newUserInfo = "SELECT `id`, `username`, `dob`, `profile_image`, `cover_photo` FROM `users` WHERE `id` = $newUserId";
-                $exeNewUserInfo = mysqli_query($conn,$newUserInfo);
+                $exeNewUserInfo = mysqli_query($conn, $newUserInfo);
                 $newUserData = mysqli_fetch_assoc($exeNewUserInfo);
 
                 // STORE USER INFO VIA SESSIONS
@@ -43,11 +55,17 @@ if (isset($_POST['signupBtn'])) {
                 $_SESSION['dob'] = $newUserData['dob'];
                 $_SESSION['profile_image'] = $newUserData['profile_image'];
                 $_SESSION['cover_photo'] = $newUserData['cover_photo'];
-                $_SESSION['success_msg'] = 'অ্যাকাউন্ট তৈরি সফল হয়েছে ! 🎉🎉';
+                $_SESSION['success_msg'] = 'Account creation successful ! 🎉🎉';
                 header('location: index.php');
                 exit();
             } else {
-                echo "<script>alert('অ্যাকাউন্ট তৈরি হয়নি!')</script>";
+                ?>
+
+                <script>
+                    alert('Account not created!')
+                </script>
+                <?php
+
             }
         }
     }
@@ -74,15 +92,15 @@ if (isset($_POST['loginBtn'])) {
             $_SESSION['dob'] = $userData['dob'];
             $_SESSION['profile_image'] = $userData['profile_image'];
             $_SESSION['cover_photo'] = $userData['cover_photo'];
-            $_SESSION['success_msg'] = "লগ ইন সফল হয়েছে ! 🎉🎉";
+            $_SESSION['success_msg'] = "Login successful ! 🎉🎉";
             header('location: index.php');
         } else {
-            echo "<script>alert('পাসওয়ার্ড ভুল !')</script>";
+            echo "<script>alert('Wrong password !')</script>";
         }
 
     } else {
         echo "<script>
-        alert('অ্যাকাউন্ট খুজে পাওয়া যাইনি ! অনুগ্রহ করে সাইন আপ করুন ।')
+        alert('Account not found! Please sign up.')
         location.replace('signup.php');
         </script>";
         exit();

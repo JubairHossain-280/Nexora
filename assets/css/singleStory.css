@@ -123,6 +123,7 @@ body {
     object-fit: cover;
     margin: auto;
     cursor: pointer;
+    background: var(--secondary-background);
 }
 
 .single-story .previous {

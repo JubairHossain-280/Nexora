@@ -9,7 +9,7 @@ include 'includes/auth.php';
 
 if (!isset($_SESSION['id'])) {
     echo "<script>
-            alert('অনুগ্রহ করে লগইন করুন !');
+            alert('Please login first !');
             window.location = 'login.php';
         </script>";
     exit();

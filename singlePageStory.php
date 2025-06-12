@@ -9,7 +9,7 @@ include 'includes/auth.php';
 
 if (!isset($_SESSION['id'])) {
     echo "<script>
-            alert('অনুগ্রহ করে লগইন করুন !');
+            alert('Please login first !');
             window.location = 'login.php';
         </script>";
     exit();
@@ -45,20 +45,15 @@ if (!isset($_SESSION['id'])) {
 
 <body>
     <div class="overlay"></div>
-    <!-- <nav class="nav-bar"> -->
+    <nav class="nav-bar">
         <div class="container-fluid nav-container">
-            <header>
-                <button type="button" class="go-back">
-                    <i class="fa-solid fa-arrow-left-long"></i>
-                </button>
-                <div class="logo">
-                    <a href="index.php">
-                        <img src="assets/img/logo.svg" alt="logo">
-                        <p>facebook</p>
-                    </a>
-                </div>
-            </header>
-            <!-- <ul class="nav-list">
+            <div class="logo">
+                <a href="index.php">
+                    <img src="assets/img/logo.svg" alt="logo">
+                    <p>facebook</p>
+                </a>
+            </div>
+            <ul class="nav-list">
                 <li class="">
                     <a href="index.php" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="5"
                         title="Home" class="nav-item">
@@ -89,7 +84,7 @@ if (!isset($_SESSION['id'])) {
                         <i class="fa-solid fa-gamepad"></i>
                     </a>
                 </li>
-            </ul> -->
+            </ul>
             <div class="mobile-navs">
                 <div class="dropdown">
                     <button class="profile dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
@@ -137,12 +132,13 @@ if (!isset($_SESSION['id'])) {
                 </button>
             </div>
         </div>
-    <!-- </nav> -->
+    </nav>
 
     <div class="offcanvas">
         <div class="logo">
             <a href="index.php">
                 <img src="assets/img/logo.svg" alt="logo">
+                <p>facebook</p>
             </a>
         </div>
         <ul class="nav-list">

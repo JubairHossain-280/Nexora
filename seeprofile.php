@@ -9,7 +9,7 @@ header("Pragma: no-cache");
 
 if (!isset($_SESSION['id'])) {
     echo "<script>
-            alert('অনুগ্রহ করে লগইন করুন !');
+            alert('Please login first !');
             window.location = 'login.php';
         </script>";
     exit();
@@ -55,7 +55,7 @@ if (!isset($_SESSION['id'])) {
             <ul class="nav-list">
                 <li class="">
                     <a href="index.php" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-delay="5"
-                        title="Home" class="nav-item active">
+                        title="Home" class="nav-item">
                         <i class="fa-solid fa-house"></i>
                     </a>
                 </li>
@@ -139,6 +139,7 @@ if (!isset($_SESSION['id'])) {
         <div class="logo">
             <a href="index.php">
                 <img src="assets/img/logo.svg" alt="logo">
+                <p>facebook</p>
             </a>
         </div>
         <ul class="nav-list">
