@@ -840,6 +840,84 @@ button {
 
 /* ================== POST SECTION END ==================== */
 
+/* ================== POST PREVIEW SECTION START ==================== */
+
+.post-preview-section .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.preview-media img,
+.preview-media video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.comment-section {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 16px;
+}
+
+.comment-section form {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    color: var(--icon-color);
+    background-color: var(--btn-color);
+    border-radius: 10px;
+}
+
+.comment-section form textarea {
+    flex: 1;
+    background: transparent;
+    color: var(--primary-color);
+    border: 0;
+    resize: none;
+    padding: 10px;
+}
+
+.comment-section form textarea:focus {
+    outline: 0;
+}
+
+.comment-section form button {
+    margin: 0 20px;
+    padding: 7px 10px;
+    border-radius: 50%;
+}
+
+.comment-section form button:hover {
+    background-color: var(--btn-hover-color);
+}
+
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+}
+
+.comment-list .comment {
+    display: flex;
+    align-items: start;
+    gap: 5px;
+}
+
+.comment-list .comment-body {
+    border-radius: 10px;
+    padding: 10px;
+    background: var(--btn-color);
+}
+
+/* ================== POST PREVIEW SECTION END ==================== */
+
 /* ================== DESKTOP VERSION ==================== */
 
 @media screen and (min-width: 992px) {

@@ -226,7 +226,8 @@ $exeQuery = mysqli_query($conn, $query);
 
                                 <div class="my-emoji-picker">
                                     <!-- Toggle for Emoji Picker -->
-                                    <button class="" type="button" id="emojiBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Emoji">
+                                    <button class="" type="button" id="emojiBtn" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Emoji">
                                         <i class="fa-regular fa-face-smile"></i>
                                     </button>
                                     <!-- Container for Emoji Picker -->
@@ -254,6 +255,7 @@ $exeQuery = mysqli_query($conn, $query);
             </div>
         </div>
 
+
         <div class="story-slider">
             <div class="story-section">
                 <a href="createstory.php" class="create-story">
@@ -278,31 +280,37 @@ $exeQuery = mysqli_query($conn, $query);
         <div class="post-section">
             <?php
             while ($post = mysqli_fetch_assoc($exeQuery)) {
+                // FETCH AUTHOR DATA
+                $query2 = "SELECT * FROM `users` WHERE `id` = {$post['user_id']}";
+                $exeQuery2 = mysqli_query($conn, $query2);
+                if ($exeQuery2) {
+                    $row = mysqli_fetch_assoc($exeQuery2);
+                }
                 ?>
 
-                <div class="post">
+                <div class="post" data-authorname="<?php echo $row['username'] ?>"
+                    data-authorimage="<?php echo $row['profile_image'] !== '' ? htmlspecialchars($row['profile_image']) : 'assets/img/profile.jpg' ?>"
+                    data-context="<?php echo $post['post_context'] ?>"
+                    data-media="<?php echo htmlspecialchars($post['post_media']) ?>"
+                    data-mediatype="<?php echo $post['media_type'] ?>">
                     <div class="post-header">
                         <div class="post-author">
                             <?php
-                            // FETCH AUTHOR DATA
-                            $query2 = "SELECT * FROM `users` WHERE `id` = {$post['user_id']}";
-                            $exeQuery2 = mysqli_query($conn, $query2);
-                            if ($exeQuery2) {
-                                $row = mysqli_fetch_assoc($exeQuery2);
-                                if ($row['profile_image'] !== '') {
-                                    ?>
 
-                                    <img src="<?php echo htmlspecialchars($row['profile_image']) ?>" alt="profile">
+                            if ($row['profile_image'] !== '') {
+                                ?>
 
-                                    <?php
-                                } else {
-                                    ?>
+                                <img src="<?php echo htmlspecialchars($row['profile_image']) ?>" alt="author">
 
-                                    <img src="assets/img/profile.jpg" alt="profile">
+                                <?php
+                            } else {
+                                ?>
 
-                                    <?php
-                                }
+                                <img src="assets/img/profile.jpg" alt="author">
+
+                                <?php
                             }
+
                             ?>
                             <p><?php echo $row['username'] ?></p>
                         </div>
@@ -336,21 +344,26 @@ $exeQuery = mysqli_query($conn, $query);
                             <p><?php echo $postContext ?></p>
                             <?php
                         }
-
-                        if ($post['media_type'] === 'image') {
-                            ?>
-
-                            <img src="<?php echo $post['post_media'] ?>" alt="">
-
-                            <?php
-                        } elseif ($post['media_type'] === 'video') {
-                            ?>
-
-                            <video src="<?php echo $post['post_media'] ?>" controls autoplay muted></video>
-
-                            <?php
-                        }
                         ?>
+                        <div class="post-media-trigger" data-bs-toggle="modal" data-bs-target="#postPreviewModal"
+                            style="cursor: pointer;">
+                            <?php
+
+                            if ($post['media_type'] === 'image') {
+                                ?>
+
+                                <img src="<?php echo $post['post_media'] ?>" alt="">
+
+                                <?php
+                            } elseif ($post['media_type'] === 'video') {
+                                ?>
+
+                                <video src="<?php echo $post['post_media'] ?>" controls autoplay muted></video>
+
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </div>
                     <div class="post-footer">
                         <div class="like" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Like">
@@ -373,6 +386,64 @@ $exeQuery = mysqli_query($conn, $query);
             ?>
 
         </div>
+
+        <div class="post-preview-section">
+            <!-- Modal -->
+            <div class="modal my-modal" id="postPreviewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="my-modal-header">
+                            <h5 class="my-modal-title">View post</h5>
+                            <button type="button" class="my-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <img alt="author" class="preview-author-img">
+                                    <p class="preview-author-name"></p>
+                                </div>
+                                <div class="post-btns">
+                                    <button type="button">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="post-body">
+                                <p class="preview-context"></p>
+                                <div class="preview-media"></div>
+                            </div>
+                        </div>
+                        <div class="comment-section">
+                            <button onclick="window.location.href = 'seeprofile.php'" class="profile" type="button">
+                                <?php
+                                if ($_SESSION['profile_image']) {
+                                    echo "<img src='" . htmlspecialchars($_SESSION['profile_image']) . "' alt='profile'>";
+                                } else {
+                                    echo "<img src='assets/img/profile.jpg' alt='profile'>";
+                                }
+                                ?>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
+                            <form action="" method="post">
+                                <textarea name="comment" id="" placeholder="Write a public comment..." required></textarea>
+                                <button type="submit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Comment">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="comment-list">
+                            <div class="comment">
+                                <div class="comment-author"></div>
+                                <div class="comment-body">comment goes here...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
 
@@ -380,6 +451,7 @@ $exeQuery = mysqli_query($conn, $query);
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/post.js"></script>
+
     <!-- Emoji Mart -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
     <script>

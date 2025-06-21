@@ -65,4 +65,69 @@ document.addEventListener('click', (e) => {
     if (!emojiDropdown.contains(e.target) && !emojiBtn.contains(e.target)) {
         emojiDropdown.style.display = 'none';
     }
-}) 
+})
+
+
+
+// Post Trigger Part
+document.querySelectorAll('.post').forEach(postEl => {
+    postEl.querySelector('.post-media-trigger')?.addEventListener('click', () => {
+        const authorname = postEl.dataset.authorname;
+        const authorImage = postEl.dataset.authorimage;
+        const context = postEl.dataset.context.replace(/\n/g, "<br>");
+        const media = postEl.dataset.media;
+        const mediaType = postEl.dataset.mediatype;
+
+        document.querySelector('.preview-author-img').src = authorImage;
+        document.querySelector('.preview-author-name').textContent = authorname;
+
+        const previewContext = document.querySelector('.preview-context');
+        previewContext.innerHTML = context;
+
+        const maxLength = 400;
+
+        if (context.length > maxLength) {
+            const visiblePart = context.substring(0, maxLength);
+            const hiddenPart = context.substring(maxLength);
+            previewContext.innerHTML = `${visiblePart}<span class="dots">...</span><span class="hidden-part" style="display: none">${hiddenPart}</span><span class="see-more" style="cursor: pointer"> see more</span>`;
+
+            previewContext.querySelector('.see-more').addEventListener('click', function () {
+                const hiddenPart = previewContext.querySelector('.hidden-part');
+                const dots = previewContext.querySelector('.dots');
+
+                if (hiddenPart.style.display === 'none') {
+                    hiddenPart.style.display = 'inline';
+                    dots.style.display = 'none';
+                    this.innerHTML = " see less";
+                }
+                else {
+                    hiddenPart.style.display = 'none';
+                    dots.style.display = 'inline';
+                    this.innerHTML = " see more";
+                }
+
+            })
+        }
+
+        const previewMedia = document.querySelector('.preview-media');
+        previewMedia.innerHTML = "";
+
+        if (media) {
+            if (mediaType === 'image') {
+                const img = document.createElement('img');
+                img.src = media;
+                img.alt = "Post Media";
+                previewMedia.appendChild(img);
+            }
+            else if (mediaType === "video") {
+                const video = document.createElement('video');
+                video.src = media;
+                video.controls = true;
+                video.muted = true;
+                video.autoplay = true;
+                previewMedia.appendChild(video);
+            }
+        }
+
+    })
+})
