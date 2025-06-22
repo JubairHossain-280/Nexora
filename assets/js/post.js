@@ -9,12 +9,16 @@ const postForm = document.querySelector('.post-form');
 const resetBtn = document.querySelector('.my-modal-close');
 const postMedia = document.getElementById('post-media');
 const postMediaPreview = document.querySelector('.post-media-preview');
+const postContext = document.querySelector('.post-context');
+const postBtn = document.querySelector('.post-form .post-btn');
 
 postMedia.addEventListener('change', function () {
     const file = this.files[0];
     const fileType = file.type;
     postMediaPreview.innerHTML = "";
     if (file) {
+        postBtn.style.cursor = 'pointer';
+        postBtn.style.filter = 'grayscale(0) opacity(1)';
         const reader = new FileReader();
         if (fileType.startsWith('image/')) {
             reader.onload = function (e) {
@@ -33,12 +37,35 @@ postMedia.addEventListener('change', function () {
         }
         reader.readAsDataURL(file);
     }
+    else {
+        postBtn.style.cursor = 'not-allowed';
+        postBtn.style.filter = 'grayscale(100) opacity(0.5)';
+    }
 
 });
 
 resetBtn.addEventListener('click', () => {
     postForm.reset();
     postMediaPreview.innerHTML = "";
+    postBtn.style.cursor = 'not-allowed';
+    postBtn.style.filter = 'grayscale(100) opacity(0.5)';
+})
+
+postContext.addEventListener('input', function () {
+    if (this.value.trim() !== '') {
+        postBtn.style.cursor = 'pointer';
+        postBtn.style.filter = 'grayscale(0) opacity(1)';
+    }
+    else {
+        postBtn.style.cursor = 'not-allowed';
+        postBtn.style.filter = 'grayscale(100) opacity(0.5)';
+    }
+})
+
+postBtn.addEventListener('click', function () {
+    if (postContext.value.trim() !== '' || postMedia.files.length > 0) {
+        window.location.href = 'includes/createpost.php';
+    }
 })
 
 const togglePost = (btn) => {
@@ -130,4 +157,27 @@ document.querySelectorAll('.post').forEach(postEl => {
         }
 
     })
+})
+
+// Comment Trigger Part
+const commentTxt = document.querySelector('.comment-section form .comment-box');
+const commentBtn = document.querySelector('.comment-section form .comment-btn');
+
+commentTxt.addEventListener('input', function () {
+    if (this.value.trim() !== '') {
+        commentBtn.style.cursor = 'pointer';
+        commentBtn.style.filter = 'brightness(1)';
+    }
+    else {
+        commentBtn.style.cursor = 'not-allowed';
+        commentBtn.style.filter = 'brightness(0.5)';
+
+    }
+})
+
+commentBtn.addEventListener('click', function (e) {
+    // e.preventDefault();
+    if (commentTxt.value.trim() !== '') {
+        window.location.href = 'includes/comment.php';
+    }
 })

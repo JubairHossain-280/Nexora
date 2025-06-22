@@ -219,7 +219,7 @@ $exeQuery = mysqli_query($conn, $query);
                                 </a>
                                 <p><?php echo $_SESSION['username'] ?></p>
                             </div>
-                            <form action="includes/createpost.php" method="post" enctype="multipart/form-data"
+                            <form action="" method="post" enctype="multipart/form-data"
                                 class="post-form">
                                 <textarea class="post-context" name="post-context" id="postContent"
                                     placeholder="What's on your mind, <?php echo $_SESSION['username'] ?>?"></textarea>
@@ -247,7 +247,7 @@ $exeQuery = mysqli_query($conn, $query);
                                         </div>
                                     </label>
                                 </div>
-                                <button type="submit" class="post-btn">Post</button>
+                                <button type="button" class="post-btn">Post</button>
                             </form>
                         </div>
                     </div>
@@ -288,7 +288,9 @@ $exeQuery = mysqli_query($conn, $query);
                 }
                 ?>
 
-                <div class="post" data-authorname="<?php echo $row['username'] ?>"
+                <div class="post" 
+                    data-postid= "<?php echo $post['id'] ?>"
+                    data-authorname="<?php echo $row['username'] ?>"
                     data-authorimage="<?php echo $row['profile_image'] !== '' ? htmlspecialchars($row['profile_image']) : 'assets/img/profile.jpg' ?>"
                     data-context="<?php echo $post['post_context'] ?>"
                     data-media="<?php echo htmlspecialchars($post['post_media']) ?>"
@@ -428,8 +430,10 @@ $exeQuery = mysqli_query($conn, $query);
                                 <i class="fa-solid fa-chevron-down"></i>
                             </button>
                             <form action="" method="post">
-                                <textarea name="comment" id="" placeholder="Write a public comment..." required></textarea>
-                                <button type="submit" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Comment">
+                                <textarea name="comment" id="" placeholder="Write a public comment..."
+                                    required class="comment-box"></textarea>
+                                <button type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    title="Comment" class="comment-btn">
                                     <i class="fa-solid fa-paper-plane"></i>
                                 </button>
                             </form>
