@@ -1,12 +1,14 @@
 :root {
-    --primary-background: #1c1c1d;
-    --secondary-background: #252728;
-    --border-color: #3a3c3d;
+    --primary-background: #030617;
+    --secondary-background: #0f172a;
+    --border-color: rgb(51 65 85);
     --primary-color: #e2e5e9;
     --icon-color: #b0b3b8;
-    --btn-color: #3b3d3e;
-    --btn-hover-color: #4f4f50;
-    --blue-color: #0866ff;
+    --btn-color: rgb(30 41 59);
+    --btn-hover-color: #464c54;
+    --blue-color: #3882f8;
+    --gradient-color: linear-gradient(45deg, #0D41E1, #0C63E7, #0A85ED, #09A6F3, #07C8F9);
+    --reverse-gradient-color: linear-gradient(45deg, #07C8F9, #09A6F3, #0A85ED, #0C63E7, #0D41E1);
 }
 
 body {
@@ -25,8 +27,8 @@ body {
     width: 300px;
     height: calc(100vh - 60px);
     overflow-y: auto;
-    background-color: #252728;
-    border-right: 1px solid #3a3c3d;
+    background: var(--secondary-background);
+    border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -37,7 +39,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px solid #3a3c3d;
+    border-bottom: 1px solid var(--border-color);
     padding: 20px 10px;
 }
 
@@ -144,8 +146,8 @@ body {
 
 .single-story .previous i,
 .single-story .next i {
-    background-color: rgb(37 39 40);
-    color: white;
+    background: var(--btn-color);
+    color: var(--primary-color);
     font-size: 20px;
     padding: 18px 22px;
     margin: 0 20px;
@@ -154,13 +156,13 @@ body {
 }
 
 .single-story .previous:hover i {
-    background-color: rgb(56, 57, 57);
-    transform: translateX(-5px);
+    background: var(--btn-hover-color);
+    transform: translateX(-10px);
 }
 
 .single-story .next:hover i {
-    background-color: rgb(56, 57, 57);
-    transform: translateX(5px);
+    background: var(--btn-hover-color);
+    transform: translateX(10px);
 }
 
 @media screen and (max-width: 767px) {

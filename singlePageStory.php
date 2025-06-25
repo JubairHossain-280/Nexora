@@ -49,8 +49,9 @@ if (!isset($_SESSION['id'])) {
         <div class="container-fluid nav-container">
             <div class="logo">
                 <a href="index.php">
-                    <img src="assets/img/logo.svg" alt="logo">
-                    <p>facebook</p>
+                    <img src="assets/img/logo.png" alt="logo" class="logo-img1">
+                    <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                    <!-- <p>facebook</p> -->
                 </a>
             </div>
             <ul class="nav-list">
@@ -89,14 +90,16 @@ if (!isset($_SESSION['id'])) {
                 <div class="dropdown">
                     <button class="profile dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <?php
-                        if ($_SESSION['profile_image']) {
-                            echo "<img src='" . htmlspecialchars($_SESSION['profile_image']) . "' alt='profile'>";
-                        } else {
-                            echo "<img src='assets/img/profile.jpg' alt='profile'>";
-                        }
-                        ?>
-                        <i class="fa-solid fa-chevron-down"></i>
+                        <div data-bs-toggle="tooltip" data-bs-placement="bottom" title="Account">
+                            <?php
+                            if ($_SESSION['profile_image']) {
+                                echo "<img src='" . htmlspecialchars($_SESSION['profile_image']) . "' alt='profile'>";
+                            } else {
+                                echo "<img src='assets/img/profile.jpg' alt='profile'>";
+                            }
+                            ?>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
                     </button>
                     <ul class="profile-menu dropdown-menu" aria-labelledby="dropdownMenu2">
                         <li class="see-profile">
@@ -137,8 +140,8 @@ if (!isset($_SESSION['id'])) {
     <div class="offcanvas">
         <div class="logo">
             <a href="index.php">
-                <img src="assets/img/logo.svg" alt="logo">
-                <p>facebook</p>
+                <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                <!-- <p>facebook</p> -->
             </a>
         </div>
         <ul class="nav-list">

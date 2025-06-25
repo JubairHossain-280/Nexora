@@ -48,8 +48,9 @@ if (!isset($_SESSION['id'])) {
         <div class="container-fluid nav-container">
             <div class="logo">
                 <a href="index.php">
-                    <img src="assets/img/logo.svg" alt="logo">
-                    <p>facebook</p>
+                    <img src="assets/img/logo.png" alt="logo" class="logo-img1">
+                    <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                    <!-- <p>facebook</p> -->
                 </a>
             </div>
             <ul class="nav-list">
@@ -138,8 +139,8 @@ if (!isset($_SESSION['id'])) {
     <div class="offcanvas">
         <div class="logo">
             <a href="index.php">
-                <img src="assets/img/logo.svg" alt="logo">
-                <p>facebook</p>
+                <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                <!-- <p>facebook</p> -->
             </a>
         </div>
         <ul class="nav-list">
@@ -197,8 +198,8 @@ if (!isset($_SESSION['id'])) {
                     </ul>
                 </div>
                 <div class="cover-btns">
-                    <button type="reset" class="btn btn-danger cancel-btn">Cancel</button>
-                    <button type="submit" class="btn btn-primary save-changes">Save Changes</button>
+                    <button type="reset" class="btn cancel-btn">Cancel</button>
+                    <button type="submit" class="btn save-btn">Save Changes</button>
                 </div>
             </form>
             <div class="profile-photo">
@@ -242,8 +243,8 @@ if (!isset($_SESSION['id'])) {
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary cancel-btn" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn save-btn">Save</button>
                 </div>
                 </form>
             </div>

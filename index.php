@@ -51,8 +51,10 @@ $exeQuery = mysqli_query($conn, $query);
 
 <body>
     <div class="splash-screen">
-        <div class="loader">
-            <img src="assets/img/logo.svg" alt="loading...">
+        <img src="assets/img/logo.png" alt="loading..." class="brand-logo">
+        <div class="company-name">
+            <span>from</span> <br> 
+            <img src="assets/img/logo2.png" alt="company-logo">
         </div>
     </div>
     <div class="overlay"></div>
@@ -60,8 +62,9 @@ $exeQuery = mysqli_query($conn, $query);
         <div class="container-fluid nav-container">
             <div class="logo">
                 <a href="index.php">
-                    <img src="assets/img/logo.svg" alt="logo">
-                    <p>facebook</p>
+                    <img src="assets/img/logo.png" alt="logo" class="logo-img1">
+                    <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                    <!-- <p>facebook</p> -->
                 </a>
             </div>
             <ul class="nav-list">
@@ -150,8 +153,8 @@ $exeQuery = mysqli_query($conn, $query);
     <div class="offcanvas">
         <div class="logo">
             <a href="index.php">
-                <img src="assets/img/logo.svg" alt="logo">
-                <p>facebook</p>
+                <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                <!-- <p>facebook</p> -->
             </a>
         </div>
         <ul class="nav-list">
@@ -200,13 +203,13 @@ $exeQuery = mysqli_query($conn, $query);
             <div class="modal my-modal" id="postModal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <div class="my-modal-header">
-                            <h5 class="my-modal-title">Create post</h5>
-                            <button type="button" class="my-modal-close" data-bs-dismiss="modal" aria-label="Close">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
+                        <div>
+                            <div class="my-modal-header">
+                                <h5 class="my-modal-title">Create post</h5>
+                                <button type="button" class="my-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
                             <div class="post-admin">
                                 <a href="seeprofile.php" class="profile">
                                     <?php
@@ -219,11 +222,12 @@ $exeQuery = mysqli_query($conn, $query);
                                 </a>
                                 <p><?php echo $_SESSION['username'] ?></p>
                             </div>
-                            <form action="" method="post" enctype="multipart/form-data"
+                        </div>
+                        <div class="modal-body">
+                            <form action="includes/createpost.php" method="post" enctype="multipart/form-data"
                                 class="post-form">
                                 <textarea class="post-context" name="post-context" id="postContent"
                                     placeholder="What's on your mind, <?php echo $_SESSION['username'] ?>?"></textarea>
-
                                 <div class="my-emoji-picker">
                                     <!-- Toggle for Emoji Picker -->
                                     <button class="" type="button" id="emojiBtn" data-bs-toggle="tooltip"
@@ -235,21 +239,21 @@ $exeQuery = mysqli_query($conn, $query);
                                         <emoji-picker></emoji-picker>
                                     </div>
                                 </div>
-                                <div class="post-media-preview">
-                                </div>
-                                <div class="add-to-post">
-                                    <span>Add to your post</span>
-                                    <input type="file" name="post-media" id="post-media" accept="image/*,video/*"
-                                        hidden>
-                                    <label for="post-media">
-                                        <div data-bs-toggle="tooltip" data-bs-placement="top" title="Photo/video">
-                                            <i class="fa-solid fa-file-image"></i>
-                                        </div>
-                                    </label>
-                                </div>
-                                <button type="button" class="post-btn">Post</button>
-                            </form>
+                                <div class="post-media-preview"></div>
                         </div>
+                        <div class="my-modal-footer">
+                            <div class="add-to-post">
+                                <span>Add to your post</span>
+                                <input type="file" name="post-media" id="post-media" accept="image/*,video/*" hidden>
+                                <label for="post-media">
+                                    <div data-bs-toggle="tooltip" data-bs-placement="top" title="Photo/video">
+                                        <i class="fa-solid fa-file-image"></i>
+                                    </div>
+                                </label>
+                            </div>
+                            <button type="button" class="create-post-btn">Post</button>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -288,9 +292,7 @@ $exeQuery = mysqli_query($conn, $query);
                 }
                 ?>
 
-                <div class="post" 
-                    data-postid= "<?php echo $post['id'] ?>"
-                    data-authorname="<?php echo $row['username'] ?>"
+                <div class="post" data-postid="<?php echo $post['id'] ?>" data-authorname="<?php echo $row['username'] ?>"
                     data-authorimage="<?php echo $row['profile_image'] !== '' ? htmlspecialchars($row['profile_image']) : 'assets/img/profile.jpg' ?>"
                     data-context="<?php echo $post['post_context'] ?>"
                     data-media="<?php echo htmlspecialchars($post['post_media']) ?>"
@@ -393,16 +395,16 @@ $exeQuery = mysqli_query($conn, $query);
             <!-- Modal -->
             <div class="modal my-modal" id="postPreviewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                     <div class="modal-content">
-                        <div class="my-modal-header">
-                            <h5 class="my-modal-title">View post</h5>
-                            <button type="button" class="my-modal-close" data-bs-dismiss="modal" aria-label="Close">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="post-header">
+                        <div>
+                            <div class="my-modal-header">
+                                <h5 class="my-modal-title">View post</h5>
+                                <button type="button" class="my-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+                            </div>
+                            <div class="post-preview-header">
                                 <div class="post-author">
                                     <img alt="author" class="preview-author-img">
                                     <p class="preview-author-name"></p>
@@ -413,9 +415,17 @@ $exeQuery = mysqli_query($conn, $query);
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                        <div class="modal-body">
                             <div class="post-body">
                                 <p class="preview-context"></p>
                                 <div class="preview-media"></div>
+                            </div>
+                            <div class="comment-list">
+                                <div class="comment">
+                                    <div class="comment-author"></div>
+                                    <div class="comment-body">comment goes here...</div>
+                                </div>
                             </div>
                         </div>
                         <div class="comment-section">
@@ -430,19 +440,13 @@ $exeQuery = mysqli_query($conn, $query);
                                 <i class="fa-solid fa-chevron-down"></i>
                             </button>
                             <form action="" method="post">
-                                <textarea name="comment" id="" placeholder="Write a public comment..."
-                                    required class="comment-box"></textarea>
+                                <textarea name="comment" id="" placeholder="Write a public comment..." required
+                                    class="comment-box"></textarea>
                                 <button type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
                                     title="Comment" class="comment-btn">
                                     <i class="fa-solid fa-paper-plane"></i>
                                 </button>
                             </form>
-                        </div>
-                        <div class="comment-list">
-                            <div class="comment">
-                                <div class="comment-author"></div>
-                                <div class="comment-body">comment goes here...</div>
-                            </div>
                         </div>
                     </div>
                 </div>

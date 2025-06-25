@@ -1,12 +1,16 @@
 :root {
-    --primary-background: #1c1c1d;
-    --secondary-background: #252728;
-    --border-color: #3a3c3d;
+    --primary-background: #030617;
+    --secondary-background: #0f172a;
+    --border-color: rgb(51 65 85);
     --primary-color: #e2e5e9;
     --icon-color: #b0b3b8;
-    --btn-color: #3b3d3e;
-    --btn-hover-color: #4f4f50;
-    --blue-color: #0866ff;
+    --btn-color: rgb(30 41 59);
+    --btn-hover-color: #464c54;
+    --blue-color: #3882f8;
+    --gradient-color: linear-gradient(45deg, #0D41E1, #0C63E7, #0A85ED, #09A6F3, #07C8F9);
+    --reverse-gradient-color: linear-gradient(45deg, #07C8F9, #09A6F3, #0A85ED, #0C63E7, #0D41E1);
+    --red-gradient-color: linear-gradient(45deg,#e70023,#c2001d,#9f0119,#7F0012, #6E0210, #5E030E, #4D050D);
+    --pinkish-gradient-color: linear-gradient(45deg, #E3436B, #D33E70, #C33875, #B3337A, #A32E7E, #932883, #832388);
 }
 
 body {
@@ -42,14 +46,15 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--secondary-background);
-    background: var(--primary-color);
+    color: var(--primary-color);
+    background: var(--gradient-color);
+    border: 0;
     transition: all 0.1s ease;
     font-weight: 600;
 }
 
 .profile-details .cover-photo .dropdown-toggle i {
-    color: var(--secondary-background);
+    color: var(--primary-color);
 }
 
 .profile-details .cover-photo .dropdown-toggle:active {
@@ -61,7 +66,7 @@ body {
 }
 
 .profile-details .cover-photo .dropdown-menu {
-    background: var(--secondary-background);
+    background: var(--primary-background);
     width: 350px;
     border-radius: 10px;
     padding: 3px 8px;
@@ -111,7 +116,7 @@ body {
     height: 168px;
     /* overflow: hidden; */
     border-radius: 50%;
-    border: 5px solid #252728;
+    border: 5px solid var(--border-color);
     position: absolute;
     left: 50px;
     bottom: -80px;
@@ -130,13 +135,15 @@ body {
     right: -5px;
     bottom: 10px;
     font-size: 20px;
+    width: 35px;
+    height: 35px;
+    background: var(--gradient-color);
+    border-radius: 50%;
 }
 
 .profile-details .profile-photo .edit-photo-btn i {
     color: var(--primary-color);
-    background-color: var(--btn-color);
-    border-radius: 50%;
-    padding: 10px 8px;
+    /* padding: 10px 8px; */
 }
 
 .modal-body {
@@ -164,6 +171,16 @@ body {
 
 .upload-btn:hover {
     filter: brightness(1.2);
+}
+
+.save-btn {
+    background: var(--gradient-color);
+    color: var(--primary-color);
+}
+
+.cancel-btn {
+    background: var(--red-gradient-color);
+    color: var(--primary-color)
 }
 
 .preview-container {

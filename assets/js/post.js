@@ -10,15 +10,15 @@ const resetBtn = document.querySelector('.my-modal-close');
 const postMedia = document.getElementById('post-media');
 const postMediaPreview = document.querySelector('.post-media-preview');
 const postContext = document.querySelector('.post-context');
-const postBtn = document.querySelector('.post-form .post-btn');
+const CreatePostBtn = document.querySelector('.create-post-btn');
 
 postMedia.addEventListener('change', function () {
     const file = this.files[0];
     const fileType = file.type;
     postMediaPreview.innerHTML = "";
     if (file) {
-        postBtn.style.cursor = 'pointer';
-        postBtn.style.filter = 'grayscale(0) opacity(1)';
+        CreatePostBtn.style.cursor = 'pointer';
+        CreatePostBtn.style.filter = 'grayscale(0) opacity(1)';
         const reader = new FileReader();
         if (fileType.startsWith('image/')) {
             reader.onload = function (e) {
@@ -38,8 +38,8 @@ postMedia.addEventListener('change', function () {
         reader.readAsDataURL(file);
     }
     else {
-        postBtn.style.cursor = 'not-allowed';
-        postBtn.style.filter = 'grayscale(100) opacity(0.5)';
+        CreatePostBtn.style.cursor = 'not-allowed';
+        CreatePostBtn.style.filter = 'grayscale(100) opacity(0.5)';
     }
 
 });
@@ -47,24 +47,24 @@ postMedia.addEventListener('change', function () {
 resetBtn.addEventListener('click', () => {
     postForm.reset();
     postMediaPreview.innerHTML = "";
-    postBtn.style.cursor = 'not-allowed';
-    postBtn.style.filter = 'grayscale(100) opacity(0.5)';
+    CreatePostBtn.style.cursor = 'not-allowed';
+    CreatePostBtn.style.filter = 'grayscale(100) opacity(0.5)';
 })
 
 postContext.addEventListener('input', function () {
     if (this.value.trim() !== '') {
-        postBtn.style.cursor = 'pointer';
-        postBtn.style.filter = 'grayscale(0) opacity(1)';
+        CreatePostBtn.style.cursor = 'pointer';
+        CreatePostBtn.style.filter = 'grayscale(0) opacity(1)';
     }
     else {
-        postBtn.style.cursor = 'not-allowed';
-        postBtn.style.filter = 'grayscale(100) opacity(0.5)';
+        CreatePostBtn.style.cursor = 'not-allowed';
+        CreatePostBtn.style.filter = 'grayscale(100) opacity(0.5)';
     }
 })
 
-postBtn.addEventListener('click', function () {
+CreatePostBtn.addEventListener('click', function () {
     if (postContext.value.trim() !== '' || postMedia.files.length > 0) {
-        window.location.href = 'includes/createpost.php';
+        postForm.submit();
     }
 })
 

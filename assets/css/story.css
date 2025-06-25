@@ -1,12 +1,16 @@
 :root {
-    --primary-background: #1c1c1d;
-    --secondary-background: #252728;
-    --border-color: #3a3c3d;
+    --primary-background: #030617;
+    --secondary-background: #0f172a;
+    --border-color: rgb(51 65 85);
     --primary-color: #e2e5e9;
     --icon-color: #b0b3b8;
-    --btn-color: #3b3d3e;
-    --btn-hover-color: #4f4f50;
-    --blue-color: #0866ff;
+    --btn-color: rgb(30 41 59);
+    --btn-hover-color: #464c54;
+    --blue-color: #3882f8;
+    --gradient-color: linear-gradient(45deg, #0D41E1, #0C63E7, #0A85ED, #09A6F3, #07C8F9);
+    --reverse-gradient-color: linear-gradient(45deg, #07C8F9, #09A6F3, #0A85ED, #0C63E7, #0D41E1);
+    --red-gradient-color: linear-gradient(45deg,#e70023,#c2001d,#9f0119,#7F0012, #6E0210, #5E030E, #4D050D);
+    --pinkish-gradient-color: linear-gradient(45deg, #E3436B, #D33E70, #C33875, #B3337A, #A32E7E, #932883, #832388);
 }
 
 body {
@@ -25,8 +29,8 @@ body {
     width: 300px;
     height: calc(100vh - 60px);
     overflow-y: auto;
-    background-color: #252728;
-    border-right: 1px solid #3a3c3d;
+    background: var(--secondary-background);
+    border-right: 1px solid var(--border-color);
     display: none;
     flex-direction: column;
     justify-content: space-between;
@@ -37,7 +41,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px solid #3a3c3d;
+    border-bottom: 1px solid var(--border-color);
     padding: 20px 10px;
 }
 
@@ -79,7 +83,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background: linear-gradient(135deg, #5409DA, #6c1ff1, #4E71FF, #8DD8FF, #BBFBFF);
+    background: var(--gradient-color);
     border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
@@ -93,7 +97,7 @@ body {
 }
 
 .content .gallery-icon i {
-    background-color: #252728;
+    background-color: var(--btn-color);
     color: #ccc;
     border-radius: 50%;
     padding: 20px;
@@ -111,7 +115,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #328E6E, #67AE6E, #90C67C, #E1EEBC);
+    background: var(--pinkish-gradient-color);
     border-radius: 8px;
     cursor: pointer;
     overflow: hidden;
@@ -153,6 +157,20 @@ body {
     justify-content: flex-end;
     align-items: center;
     gap: 20px;
+}
+
+.story-btns .post-btn{
+    background: var(--gradient-color);
+    color: var(--primary-color);
+    font-weight: 600;;
+    /* border: 0; */
+}
+
+.story-btns .cancel-btn{
+    background: var(--red-gradient-color);
+    color: var(--primary-color);
+    font-weight: 600;;
+    /* border: 0; */
 }
 
 @media screen and (min-width: 992px) {
