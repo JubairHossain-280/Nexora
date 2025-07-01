@@ -94,23 +94,60 @@ document.addEventListener('click', (e) => {
     }
 })
 
+// Fetch comments for the post
+function loadComments(postId, commentList) {
+    fetch(`api/comments.php?post_id=${postId}`)
+        .then(response => response.json())
+        .then(data => {
+            commentList.innerHTML = "";
 
+            if (data.length === 0) {
+                commentList.innerHTML = `<p class='no-comments'>
+                    <img src="assets/img/document-94.png" alt="no_comments">
+                    <span>
+                        <strong>No comments yet.</strong> <br>
+                        Be the first to comment.
+                    </span>
+                    </p>`;
+                return;
+            }
+
+            data.forEach(comment => {
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+
+                commentDiv.innerHTML = `
+                                            <div class="comment-author">
+                                                <img src="${comment.profile_image}" alt="profile">
+                                            </div>
+                                            <div class="comment-body">
+                                                <strong>${comment.username}</strong> <br>
+                                                ${comment.comment_text}
+                                            </div>
+                                        `;
+
+                commentList.appendChild(commentDiv);
+            });
+        })
+        .catch(error => {
+            console.error("Failed to load comments", error);
+        });
+}
 
 // Post Trigger Part
 document.querySelectorAll('.post').forEach(postEl => {
+    const postId = postEl.dataset.postid;
+    const modalId = `postPreviewModal-${postId}`;
+
     postEl.querySelector('.post-media-trigger')?.addEventListener('click', () => {
-        const postId = postEl.dataset.postid;
-        const authorname = postEl.dataset.authorname;
-        const authorImage = postEl.dataset.authorimage;
+        const modal = document.getElementById(modalId);
+
+        modal.querySelector('.preview-author-img').src = postEl.dataset.authorimage;
+        modal.querySelector('.preview-author-name').textContent = postEl.dataset.authorname;
+
+        // Set post context
         const context = postEl.dataset.context.replace(/\n/g, "<br>");
-        const media = postEl.dataset.media;
-        const mediaType = postEl.dataset.mediatype;
-
-        document.querySelector('.preview-author-img').src = authorImage;
-        document.querySelector('.preview-author-name').textContent = authorname;
-
-        const previewContext = document.querySelector('.preview-context');
-        previewContext.innerHTML = context;
+        const previewContext = modal.querySelector('.preview-context');
 
         const maxLength = 400;
 
@@ -135,11 +172,16 @@ document.querySelectorAll('.post').forEach(postEl => {
                 }
 
             })
+        } else {
+            previewContext.innerHTML = context;
         }
 
-        const previewMedia = document.querySelector('.preview-media');
-        previewMedia.innerHTML = "";
+        // Set post media
+        const media = postEl.dataset.media;
+        const mediaType = postEl.dataset.mediatype;
 
+        const previewMedia = modal.querySelector('.preview-media');
+        previewMedia.innerHTML = "";
         if (media) {
             if (mediaType === 'image') {
                 const img = document.createElement('img');
@@ -157,28 +199,66 @@ document.querySelectorAll('.post').forEach(postEl => {
             }
         }
 
+        // Load comments
+        const commentList = modal.querySelector('.comment-list');
+        loadComments(postId, commentList);
+
+        const commentForm = modal.querySelector('.comment-section form');
+        const commentBox = modal.querySelector('.comment-section form .comment-box');
+        const commentBtn = modal.querySelector('.comment-section form .comment-btn');
+
+        // Submit comment
+        commentForm.onsubmit = function (e) {
+            e.preventDefault();
+            const comment = commentBox.value.trim();
+            if (comment === '') return;
+
+            const formData = new FormData();
+            formData.append('post_id', postId);
+            formData.append('comment', comment);
+
+            fetch('api/addcomment.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(res => res.json())
+                .then(response => {
+                    if (response.status === 'success') {
+                        commentBox.value = '';
+                        commentBtn.style.cursor = 'not-allowed';
+                        commentBtn.style.filter = 'brightness(0.5)';
+                        loadComments(postId, commentList);
+                    } else {
+                        throw new Error(response)
+                    }
+                })
+                .catch(error => {
+                    console.error('Error: ' + error);
+                    alert('Failed to add comment: ' + error.message);
+                })
+        }
+
+        commentBox.addEventListener('input', function () {
+            if (this.value.trim() !== '') {
+                commentBtn.style.cursor = 'pointer';
+                commentBtn.style.filter = 'brightness(1)';
+            }
+            else {
+                commentBtn.style.cursor = 'not-allowed';
+                commentBtn.style.filter = 'brightness(0.5)';
+
+            }
+        })
+
+        // Reset comment box
+        modal.querySelector('.my-modal-close').addEventListener('click', () => {
+            commentBox.value = '';
+            commentBtn.style.cursor = 'not-allowed';
+            commentBtn.style.filter = 'brightness(0.5)';
+        });
+
+
+
     })
 })
 
-// Comment Trigger Part
-const commentForm = document.querySelector('.comment-section form');
-const commentTxt = document.querySelector('.comment-section form .comment-box');
-const commentBtn = document.querySelector('.comment-section form .comment-btn');
-
-commentTxt.addEventListener('input', function () {
-    if (this.value.trim() !== '') {
-        commentBtn.style.cursor = 'pointer';
-        commentBtn.style.filter = 'brightness(1)';
-    }
-    else {
-        commentBtn.style.cursor = 'not-allowed';
-        commentBtn.style.filter = 'brightness(0.5)';
-
-    }
-})
-
-commentBtn.addEventListener('click', function (e) {
-    if (commentTxt.value.trim() !== '') {
-        // e.preventDefault();
-    }
-})

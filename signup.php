@@ -47,14 +47,14 @@ if (isset($_SESSION['id'])) {
             <div class="password-field">
                 <input type="password" name="password" placeholder="Password" required autocomplete="new-password">
                 <button type="button">
-                    <i class="fa-regular fa-eye-slash"></i>
+                    <i class="fa-regular fa-eye"></i>
                 </button>
             </div>
             <div class="password-field">
                 <input type="password" name="confirmPassword" placeholder="Confirm password" required
                     autocomplete="new-password">
                 <button type="button">
-                    <i class="fa-regular fa-eye-slash"></i>
+                    <i class="fa-regular fa-eye"></i>
                 </button>
             </div>
             <button type="submit" name="signupBtn" class="submit-btn">Sign Up</button>

@@ -349,7 +349,7 @@ $exeQuery = mysqli_query($conn, $query);
                             <?php
                         }
                         ?>
-                        <div class="post-media-trigger" data-bs-toggle="modal" data-bs-target="#postPreviewModal"
+                        <div class="post-media-trigger" data-bs-toggle="modal" data-bs-target="#postPreviewModal-<?php echo $post['id'] ?>"
                             style="cursor: pointer;">
                             <?php
 
@@ -387,7 +387,7 @@ $exeQuery = mysqli_query($conn, $query);
 
                 <div class="post-preview-section">
                     <!-- Modal -->
-                    <div class="modal my-modal" id="postPreviewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    <div class="modal my-modal" id="postPreviewModal-<?php echo $post['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
@@ -417,10 +417,10 @@ $exeQuery = mysqli_query($conn, $query);
                                         <div class="preview-media"></div>
                                     </div>
                                     <div class="comment-list">
-                                        <div class="comment">
+                                        <!-- <div class="comment">
                                             <div class="comment-author"></div>
                                             <div class="comment-body">comment goes here...</div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="comment-section">
@@ -461,7 +461,7 @@ $exeQuery = mysqli_query($conn, $query);
     <?php
     // comment logic
     if (isset($_POST['comment-btn'])) {
-        $commentText = $POST['comment'];
+        $commentText = $_POST['comment'];
         $postId = $_POST['post_id'];
         $userId = $_SESSION['id'];
 

@@ -9,7 +9,7 @@
     --blue-color: #3882f8;
     --gradient-color: linear-gradient(45deg, #0D41E1, #0C63E7, #0A85ED, #09A6F3, #07C8F9);
     --reverse-gradient-color: linear-gradient(45deg, #07C8F9, #09A6F3, #0A85ED, #0C63E7, #0D41E1);
-    --red-gradient-color: linear-gradient(45deg,#e70023,#c2001d,#9f0119,#7F0012, #6E0210, #5E030E, #4D050D);
+    --red-gradient-color: linear-gradient(45deg, #e70023, #c2001d, #9f0119, #7F0012, #6E0210, #5E030E, #4D050D);
     --pinkish-gradient-color: linear-gradient(45deg, #E3436B, #D33E70, #C33875, #B3337A, #A32E7E, #932883, #832388);
 }
 
@@ -190,7 +190,8 @@ button {
 .nav-bar .nav-item.active i {
     background: var(--gradient-color);
     color: transparent;
-    background-clip: text;;
+    background-clip: text;
+    ;
 }
 
 .nav-bar .nav-item i {
@@ -968,10 +969,35 @@ button {
     gap: 5px;
 }
 
+.comment-author img {
+    width: 40px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
 .comment-list .comment-body {
+    min-width: 150px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px 10px;
     background: var(--btn-color);
+}
+
+.no-comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.no-comments span {
+    text-align: center;
+    font-size: 18px;
+}
+
+.no-comments span strong {
+    font-size: 20px;
 }
 
 /* ================== POST PREVIEW SECTION END ==================== */

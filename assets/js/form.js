@@ -12,12 +12,12 @@ showPassBtn.forEach((btn, index) => {
       input.setAttribute('type', 'text');
       input.style.padding = '0';
       input.style.boxShadow = 'none';
-      icon.classList.add('fa-eye');
-      icon.classList.remove('fa-eye-slash');
-    } else {
-      input.setAttribute('type', 'password');
       icon.classList.add('fa-eye-slash');
       icon.classList.remove('fa-eye');
+    } else {
+      input.setAttribute('type', 'password');
+      icon.classList.add('fa-eye');
+      icon.classList.remove('fa-eye-slash');
     }
   });
 });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2025 at 05:29 AM
+-- Generation Time: Jul 01, 2025 at 04:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,10 +40,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `user_id`, `comment_text`, `create_at`) VALUES
-(1, 0, 0, '[value-3]', '2025-06-22 14:30:22.901336'),
-(2, 0, 0, '[value-3]', '2025-06-22 14:40:22.572938'),
-(3, 0, 0, '[value-3]', '2025-06-22 15:04:35.187990'),
-(4, 0, 0, '[value-3]', '2025-06-22 15:05:49.660905');
+(7, 0, 49, '', '2025-06-25 20:33:20.433416'),
+(8, 61, 49, '', '2025-06-25 20:33:29.139650'),
+(9, 61, 49, '', '2025-07-01 02:20:07.680446');
 
 -- --------------------------------------------------------
 
@@ -91,11 +90,12 @@ CREATE TABLE `stories` (
 --
 
 INSERT INTO `stories` (`id`, `user_id`, `story_path`, `created_at`) VALUES
-(98, 49, 'uploads/stories/685ade2cf28b6array_with.mp4', '2025-06-24 17:19:41.112008'),
-(99, 49, 'uploads/stories/685ade382e84cA_BETTER_way_to_find_quick_jobs_on_LinkedIn.mp4', '2025-06-24 17:19:52.236085'),
-(100, 49, 'uploads/stories/685ade40a0431Google_meet_AI_live_translation_new_feature____GoogleIO__shorts__google__googlemeet.mp4', '2025-06-24 17:20:00.678809'),
-(103, 49, 'uploads/stories/685adef678e62What_will_you_get_from_our_Redux_course_Batch_2__shorts.mp4', '2025-06-24 17:23:02.517704'),
-(104, 49, 'uploads/stories/685adefba3afcpolite_communication.mp4', '2025-06-24 17:23:07.688493');
+(105, 49, 'uploads/stories/685c4910db21carray_with.mp4', '2025-06-25 19:08:01.101560'),
+(106, 49, 'uploads/stories/685c49252fdc7A_BETTER_way_to_find_quick_jobs_on_LinkedIn.mp4', '2025-06-25 19:08:21.220162'),
+(107, 49, 'uploads/stories/685c4935ef5b9Google_meet_AI_live_translation_new_feature____GoogleIO__shorts__google__googlemeet.mp4', '2025-06-25 19:08:38.003744'),
+(108, 49, 'uploads/stories/685c493acf951What_will_you_get_from_our_Redux_course_Batch_2__shorts.mp4', '2025-06-25 19:08:42.872766'),
+(109, 49, 'uploads/stories/685c493fc55d0Financial_Freedom_Difficult__financialfreedom__shorts___career.mp4', '2025-06-25 19:08:47.818356'),
+(110, 49, 'uploads/stories/685c4943c412apolite_communication.mp4', '2025-06-25 19:08:51.824274');
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `dob`, `email`, `password`, `profile_image`, `cover_photo`) VALUES
-(49, 'sakib', '2007-06-01', 'sakib@gmail.com', '$2y$10$qkaJsEICDX6ncbjWCv0.d.74osksZCjzUMqDB84QGrOEQlvHSiYnu', 'uploads/profiles/685afd230e00e505500662_23915014211497381_6219735244135613829_n.jpg', 'uploads/covers/683f00d583453javascript-google-node-js-html-microsoft-visual-studio-hd-wallpaper-preview.jpg'),
+(49, 'sakib', '2007-06-01', 'sakib@gmail.com', '$2y$10$qkaJsEICDX6ncbjWCv0.d.74osksZCjzUMqDB84QGrOEQlvHSiYnu', 'uploads/profiles/685c466a79a66AdobeStock_701732977_Preview-transformed.jpeg', 'uploads/covers/685c458305017506055573_23914996564832479_7901225312790666100_n.jpg'),
 (50, 'Anamul', '2025-06-03', 'anamul@gmail.com', '$2y$10$nK6X/veEAbOMt1Iw4F0Mae1d5DFFwfsEVibbcSX6JdQbXzJOmzy2C', '', ''),
 (51, 'admin', '2025-06-12', 'jubair@gmail.com', '$2y$10$owsJASLyzrXdpCTYPPPwoeBNcbfrdZ/b5z8Ls0xwqJhVNbc7bq1e2', '', '');
 
@@ -158,7 +158,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -170,7 +170,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `stories`
 --
 ALTER TABLE `stories`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `users`

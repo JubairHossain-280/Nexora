@@ -36,7 +36,7 @@ header("Expires: 0");
             <div class="password-field">
                 <input type="password" name="userpassword" placeholder="Password" required autocomplete="current-password">
                 <button type="button">
-                    <i class="fa-regular fa-eye-slash"></i>
+                    <i class="fa-regular fa-eye"></i>
                 </button>
             </div>
             <button type="submit" name="loginBtn" class="submit-btn">Log in</button>
