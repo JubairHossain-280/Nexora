@@ -34,8 +34,8 @@ $exeQuery = mysqli_query($conn, $query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/logo.svg" type="image/x-icon">
-    <title>Facebook | Home</title>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+    <title>Nexora | Home</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,10 +51,10 @@ $exeQuery = mysqli_query($conn, $query);
 
 <body>
     <div class="splash-screen">
-        <img src="assets/img/logo.png" alt="loading..." class="brand-logo">
+        <img src="assets/img/splash.png" alt="loading..." class="brand-logo">
         <div class="company-name">
-            <span>from</span> <br> 
-            <img src="assets/img/logo2.png" alt="company-logo">
+            <span>from</span> <br>
+            <img src="assets/img/brand.png" alt="company-logo">
         </div>
     </div>
     <div class="overlay"></div>
@@ -63,7 +63,7 @@ $exeQuery = mysqli_query($conn, $query);
             <div class="logo">
                 <a href="index.php">
                     <img src="assets/img/logo.png" alt="logo" class="logo-img1">
-                    <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                    <img src="assets/img/brand.png" alt="logo" class="logo-img2">
                     <!-- <p>facebook</p> -->
                 </a>
             </div>
@@ -153,7 +153,7 @@ $exeQuery = mysqli_query($conn, $query);
     <div class="offcanvas">
         <div class="logo">
             <a href="index.php">
-                <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                <img src="assets/img/brand.png" alt="logo" class="logo-img2">
                 <!-- <p>facebook</p> -->
             </a>
         </div>
@@ -385,74 +385,90 @@ $exeQuery = mysqli_query($conn, $query);
                     </div>
                 </div>
 
+                <div class="post-preview-section">
+                    <!-- Modal -->
+                    <div class="modal my-modal" id="postPreviewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                            <div class="modal-content">
+                                <div>
+                                    <div class="my-modal-header">
+                                        <h5 class="my-modal-title">View post</h5>
+                                        <button type="button" class="my-modal-close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </div>
+                                    <div class="post-preview-header">
+                                        <div class="post-author">
+                                            <img alt="author" class="preview-author-img">
+                                            <p class="preview-author-name"></p>
+                                        </div>
+                                        <div class="post-btns">
+                                            <button type="button">
+                                                <i class="fa-solid fa-ellipsis"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="post-body">
+                                        <p class="preview-context"></p>
+                                        <div class="preview-media"></div>
+                                    </div>
+                                    <div class="comment-list">
+                                        <div class="comment">
+                                            <div class="comment-author"></div>
+                                            <div class="comment-body">comment goes here...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-section">
+                                    <button onclick="window.location.href = 'seeprofile.php'" class="profile" type="button">
+                                        <?php
+                                        if ($_SESSION['profile_image']) {
+                                            echo "<img src='" . htmlspecialchars($_SESSION['profile_image']) . "' alt='profile'>";
+                                        } else {
+                                            echo "<img src='assets/img/profile.jpg' alt='profile'>";
+                                        }
+                                        ?>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="post_id" value="<?php echo $post['id'] ?>">
+                                        <textarea name="comment" id="" placeholder="Write a public comment..." required
+                                            class="comment-box"></textarea>
+                                        <button type="submit" name="comment-btn" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Comment" class="comment-btn">
+                                            <i class="fa-solid fa-paper-plane"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <?php
             }
             ?>
 
         </div>
 
-        <div class="post-preview-section">
-            <!-- Modal -->
-            <div class="modal my-modal" id="postPreviewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-                    <div class="modal-content">
-                        <div>
-                            <div class="my-modal-header">
-                                <h5 class="my-modal-title">View post</h5>
-                                <button type="button" class="my-modal-close" data-bs-dismiss="modal" aria-label="Close">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
-                            </div>
-                            <div class="post-preview-header">
-                                <div class="post-author">
-                                    <img alt="author" class="preview-author-img">
-                                    <p class="preview-author-name"></p>
-                                </div>
-                                <div class="post-btns">
-                                    <button type="button">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-body">
-                            <div class="post-body">
-                                <p class="preview-context"></p>
-                                <div class="preview-media"></div>
-                            </div>
-                            <div class="comment-list">
-                                <div class="comment">
-                                    <div class="comment-author"></div>
-                                    <div class="comment-body">comment goes here...</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-section">
-                            <button onclick="window.location.href = 'seeprofile.php'" class="profile" type="button">
-                                <?php
-                                if ($_SESSION['profile_image']) {
-                                    echo "<img src='" . htmlspecialchars($_SESSION['profile_image']) . "' alt='profile'>";
-                                } else {
-                                    echo "<img src='assets/img/profile.jpg' alt='profile'>";
-                                }
-                                ?>
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
-                            <form action="" method="post">
-                                <textarea name="comment" id="" placeholder="Write a public comment..." required
-                                    class="comment-box"></textarea>
-                                <button type="button" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                    title="Comment" class="comment-btn">
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </main>
+
+    <?php
+    // comment logic
+    if (isset($_POST['comment-btn'])) {
+        $commentText = $POST['comment'];
+        $postId = $_POST['post_id'];
+        $userId = $_SESSION['id'];
+
+        $query3 = "INSERT INTO `comments`(`post_id`, `user_id`, `comment_text`) VALUES ('$postId','$userId','$commentText')";
+        $exeQuery3 = mysqli_query($conn, $query3);
+    }
+    ?>
 
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>

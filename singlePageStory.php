@@ -28,8 +28,8 @@ if (!isset($_SESSION['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/logo.svg" type="image/x-icon">
-    <title>Facebook | Stories</title>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+    <title>Nexora | Stories</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +50,7 @@ if (!isset($_SESSION['id'])) {
             <div class="logo">
                 <a href="index.php">
                     <img src="assets/img/logo.png" alt="logo" class="logo-img1">
-                    <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                    <img src="assets/img/brand.png" alt="logo" class="logo-img2">
                     <!-- <p>facebook</p> -->
                 </a>
             </div>
@@ -140,7 +140,7 @@ if (!isset($_SESSION['id'])) {
     <div class="offcanvas">
         <div class="logo">
             <a href="index.php">
-                <img src="assets/img/logo2.png" alt="logo" class="logo-img2">
+                <img src="assets/img/brand.png" alt="logo" class="logo-img2">
                 <!-- <p>facebook</p> -->
             </a>
         </div>

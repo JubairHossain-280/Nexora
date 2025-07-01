@@ -14,8 +14,8 @@ header("Expires: 0");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/logo.svg" type="image/x-icon">
-    <title>Facebook | Login</title>
+    <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+    <title>Nexora | Login</title>
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

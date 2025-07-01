@@ -99,6 +99,7 @@ document.addEventListener('click', (e) => {
 // Post Trigger Part
 document.querySelectorAll('.post').forEach(postEl => {
     postEl.querySelector('.post-media-trigger')?.addEventListener('click', () => {
+        const postId = postEl.dataset.postid;
         const authorname = postEl.dataset.authorname;
         const authorImage = postEl.dataset.authorimage;
         const context = postEl.dataset.context.replace(/\n/g, "<br>");
@@ -160,6 +161,7 @@ document.querySelectorAll('.post').forEach(postEl => {
 })
 
 // Comment Trigger Part
+const commentForm = document.querySelector('.comment-section form');
 const commentTxt = document.querySelector('.comment-section form .comment-box');
 const commentBtn = document.querySelector('.comment-section form .comment-btn');
 
@@ -176,8 +178,7 @@ commentTxt.addEventListener('input', function () {
 })
 
 commentBtn.addEventListener('click', function (e) {
-    // e.preventDefault();
     if (commentTxt.value.trim() !== '') {
-        window.location.href = 'includes/comment.php';
+        // e.preventDefault();
     }
 })
