@@ -37,26 +37,6 @@ Nexora is a lightweight social media web application that emulates core features
 - No page reload for actions like submitting comments or opening modals
 - Smoother and more dynamic user experience
 
-## 📁 Project Structure
-/Nexora
-│
-├── api/ # PHP API endpoints for dynamic frontend requests
-├── assets/ # Static files (images, icons, etc.)
-├── css/ # Stylesheets
-├── js/ # Frontend scripts (story slider, post preview, etc.)
-├── php/ # Backend logic (database functions, session checks)
-├── stories/ # Uploaded story videos
-├── uploads/ # Uploaded post media
-│
-├── index.php # Homepage/feed
-├── login.php # Login page
-├── signup.php # Signup page
-├── story.php # Story preview logic
-├── post_modal.php # Post modal logic
-├── connection.php # Database configuration
-└── README.md # Project overview and instructions
-
-
 ## ⚙️ How to Run Locally
 
 1. **Clone this repository**
