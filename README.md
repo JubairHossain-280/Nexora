@@ -1,4 +1,4 @@
-# Nexora - Social Media Web App
+# Nexora - Social Media Web App 🚀
 
 Nexora is a lightweight social media web application that emulates core features of platforms like Facebook. Built with a focus on simplicity, responsiveness, and real-time interactivity, Nexora enables users to connect, share stories, and engage with posts seamlessly.
 
